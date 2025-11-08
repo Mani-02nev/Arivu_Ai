@@ -23,16 +23,38 @@ const Canvas = ({ isOpen, onClose, onSave, onGenerateCode, onSendMessage }) => {
   const startDrawing = (e) => {
     setIsDrawing(true);
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
+    if (tool === 'select') {
+      setSelectedArea({ x, y, width: 0, height: 0 });
+      return;
+    }
+    
+    const ctx = canvas.getContext('2d');
     ctx.beginPath();
     ctx.moveTo(x, y);
   };
 
   const draw = (e) => {
+    if (tool === 'select' && isDrawing) {
+      // Handle selection area
+      const canvas = canvasRef.current;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      if (selectedArea) {
+        setSelectedArea({
+          ...selectedArea,
+          width: x - selectedArea.x,
+          height: y - selectedArea.y
+        });
+      }
+      return;
+    }
+    
     if (!isDrawing) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -121,7 +143,8 @@ const Canvas = ({ isOpen, onClose, onSave, onGenerateCode, onSendMessage }) => {
             setCodePreview({
               html: htmlMatch ? htmlMatch[1] || htmlMatch[0] : response,
               css: cssMatch ? cssMatch[1] || cssMatch[0] : '',
-              js: jsMatch ? jsMatch[1] || jsMatch[0] : ''
+              js: jsMatch ? jsMatch[1] || jsMatch[0] : '',
+              activeTab: 'html'
             });
           } else {
             alert('Failed to generate code: ' + result.error);
@@ -195,22 +218,38 @@ const Canvas = ({ isOpen, onClose, onSave, onGenerateCode, onSendMessage }) => {
           </button>
         </div>
         <div className="canvas-container">
-          <canvas
-            ref={canvasRef}
-            width={800}
-            height={600}
-            onMouseDown={startDrawing}
-            onMouseMove={draw}
-            onMouseUp={stopDrawing}
-            onMouseLeave={stopDrawing}
-            className="drawing-canvas"
-          />
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <canvas
+              ref={canvasRef}
+              width={800}
+              height={600}
+              onMouseDown={startDrawing}
+              onMouseMove={draw}
+              onMouseUp={stopDrawing}
+              onMouseLeave={stopDrawing}
+              className="drawing-canvas"
+            />
+            {tool === 'select' && selectedArea && (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: selectedArea.x,
+                  top: selectedArea.y,
+                  width: Math.abs(selectedArea.width),
+                  height: Math.abs(selectedArea.height),
+                  border: '2px dashed #00d4ff',
+                  backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
+          </div>
         </div>
         <div className="canvas-footer">
           <button className="canvas-cancel-btn" onClick={onClose}>
             Cancel
           </button>
-          {tool === 'select' && selectedArea && (
+          {tool === 'select' && selectedArea && selectedArea.width !== 0 && selectedArea.height !== 0 && (
             <button className="canvas-generate-btn" onClick={generateWebsiteCode}>
               Generate Code
             </button>
@@ -229,23 +268,52 @@ const Canvas = ({ isOpen, onClose, onSave, onGenerateCode, onSendMessage }) => {
                 </button>
               </div>
               <div className="code-tabs">
-                <button className="code-tab active">HTML</button>
-                <button className="code-tab">CSS</button>
-                <button className="code-tab">JS</button>
+                <button 
+                  className={`code-tab ${codePreview.activeTab === 'html' ? 'active' : ''}`}
+                  onClick={() => setCodePreview({...codePreview, activeTab: 'html'})}
+                >
+                  HTML
+                </button>
+                <button 
+                  className={`code-tab ${codePreview.activeTab === 'css' ? 'active' : ''}`}
+                  onClick={() => setCodePreview({...codePreview, activeTab: 'css'})}
+                >
+                  CSS
+                </button>
+                <button 
+                  className={`code-tab ${codePreview.activeTab === 'js' ? 'active' : ''}`}
+                  onClick={() => setCodePreview({...codePreview, activeTab: 'js'})}
+                >
+                  JS
+                </button>
               </div>
               <pre className="code-preview">
-                <code>{codePreview.html}</code>
+                <code>{codePreview.activeTab === 'css' ? codePreview.css : codePreview.activeTab === 'js' ? codePreview.js : codePreview.html}</code>
               </pre>
               <div className="code-preview-actions">
                 <button onClick={() => {
-                  navigator.clipboard.writeText(codePreview.html);
+                  const activeCode = codePreview.activeTab === 'css' ? codePreview.css : 
+                                   codePreview.activeTab === 'js' ? codePreview.js : 
+                                   codePreview.html;
+                  navigator.clipboard.writeText(activeCode);
                   alert('Code copied to clipboard!');
                 }}>
                   Copy Code
                 </button>
                 <button onClick={() => {
                   const newWindow = window.open();
-                  newWindow.document.write(codePreview.html);
+                  const fullHTML = `<!DOCTYPE html>
+<html>
+<head>
+  <style>${codePreview.css}</style>
+</head>
+<body>
+  ${codePreview.html}
+  <script>${codePreview.js}</script>
+</body>
+</html>`;
+                  newWindow.document.write(fullHTML);
+                  newWindow.document.close();
                 }}>
                   Preview
                 </button>

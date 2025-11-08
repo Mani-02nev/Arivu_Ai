@@ -18,7 +18,13 @@ const Auth = ({ onLogin, onSignUp }) => {
       const user = result.user;
       
       // Send login confirmation (Google users are already verified)
-      console.log('Login successful:', user.email);
+      try {
+        const { sendLoginConfirmationEmail } = await import('../services/emailService');
+        await sendLoginConfirmationEmail(user.email, user.displayName || 'User');
+        console.log('Login successful - confirmation sent to:', user.email);
+      } catch (error) {
+        console.error('Login confirmation error:', error);
+      }
       
       const userData = {
         id: user.uid,
@@ -55,18 +61,22 @@ const Auth = ({ onLogin, onSignUp }) => {
       if (!isLogin && !user.emailVerified) {
         try {
           await sendEmailVerification(user);
-          alert('Verification email sent! Please check your inbox.');
+          // Also send welcome email
+          const { sendSignupConfirmationEmail } = await import('../services/emailService');
+          await sendSignupConfirmationEmail(user.email, user.displayName || email.split('@')[0]);
+          alert('Verification and welcome emails sent! Please check your inbox.');
         } catch (emailError) {
           console.error('Email verification error:', emailError);
         }
       }
       
-      // Send login confirmation email
+      // Send login confirmation
       if (isLogin) {
         try {
-          // Note: Firebase doesn't have built-in login confirmation emails
-          // We'll show a success message instead
-          console.log('Login successful:', user.email);
+          // Import and use email service
+          const { sendLoginConfirmationEmail } = await import('../services/emailService');
+          await sendLoginConfirmationEmail(user.email, user.displayName || email.split('@')[0]);
+          console.log('Login successful - confirmation sent to:', user.email);
         } catch (error) {
           console.error('Login confirmation error:', error);
         }

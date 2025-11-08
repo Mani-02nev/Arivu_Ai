@@ -311,3 +311,30 @@
   background: rgba(239, 68, 68, 0.1);
 }
 
+[data-theme="light"] .settings-section {
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="light"] .section-title {
+  color: #000000;
+}
+
+[data-theme="light"] .theme-btn {
+  border-color: var(--border-color);
+  color: #000000;
+}
+
+[data-theme="light"] .theme-btn:hover:not(.active) {
+  background: var(--hover-bg);
+}
+
+[data-theme="light"] .settings-select {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: #000000;
+}
+
+[data-theme="light"] .checkbox-label span {
+  color: #000000;
+}
+
