@@ -1,0 +1,155 @@
+.tools-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.tools-modal {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.tools-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.tools-header h3 {
+  margin: 0;
+  color: #ececf1;
+  font-size: 20px;
+}
+
+.tools-close {
+  background: transparent;
+  border: none;
+  color: #ececf1;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.tools-close:hover {
+  background: #2a2a2a;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.tool-card {
+  background: #202123;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.tool-card:hover {
+  background: #252525;
+  border-color: #00d4ff;
+  transform: translateY(-2px);
+}
+
+.tool-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tool-card.disabled:hover {
+  transform: none;
+  border-color: #2a2a2a;
+}
+
+.tool-icon {
+  font-size: 32px;
+  color: #00d4ff;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.pro-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.tool-card h4 {
+  margin: 10px 0 5px 0;
+  color: #ececf1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tool-card p {
+  margin: 0;
+  color: #8e8ea0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+[data-theme="light"] .tools-modal {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+}
+
+[data-theme="light"] .tools-header {
+  border-bottom-color: #dee2e6;
+}
+
+[data-theme="light"] .tools-header h3 {
+  color: #000000;
+}
+
+[data-theme="light"] .tools-close {
+  color: #000000;
+}
+
+[data-theme="light"] .tool-card {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+[data-theme="light"] .tool-card:hover {
+  background: #e9ecef;
+  border-color: #00d4ff;
+}
+
+[data-theme="light"] .tool-card h4 {
+  color: #000000;
+}
+
+[data-theme="light"] .tool-card p {
+  color: #666666;
+}
+

@@ -1,0 +1,31 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  background: #0f0f0f;
+  color: #ececf1;
+}
+
+.chat-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+  background: #111;
+}
+
+@media (min-width: 769px) {
+  .chat-wrapper {
+    margin-left: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+

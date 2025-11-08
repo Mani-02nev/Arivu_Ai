@@ -1,0 +1,313 @@
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #dee2e6;
+  --hover-bg: #e9ecef;
+  --icon-color: #000000;
+}
+
+/* Dark Theme (default) */
+[data-theme="dark"] {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #111;
+  --bg-tertiary: #121212;
+  --text-primary: #ececf1;
+  --text-secondary: #888888;
+  --border-color: #1a1a1a;
+  --hover-bg: #1a1a1a;
+  --icon-color: #ececf1;
+}
+
+/* Apply theme variables */
+[data-theme="light"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .App {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .chat-wrapper {
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .chat-header {
+  background: var(--bg-primary);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="light"] .chat-container {
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .input-area {
+  background: var(--bg-primary);
+  border-top-color: var(--border-color);
+}
+
+[data-theme="light"] .sidebar {
+  background: var(--bg-primary);
+  border-right-color: var(--border-color);
+}
+
+[data-theme="light"] .sidebar-header,
+[data-theme="light"] .sidebar-footer {
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .message-wrapper.ai .message {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .input-wrapper {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .chat-item:hover,
+[data-theme="light"] .settings-btn:hover {
+  background: var(--hover-bg);
+}
+
+[data-theme="light"] .subtitle {
+  color: #000000;
+  opacity: 0.8;
+}
+
+[data-theme="light"] .btn-download,
+[data-theme="light"] .btn-clear,
+[data-theme="light"] .sidebar-toggle-btn,
+[data-theme="light"] .attach-btn,
+[data-theme="light"] .voice-btn,
+[data-theme="light"] .speak-btn,
+[data-theme="light"] .delete-chat-btn,
+[data-theme="light"] .settings-btn i,
+[data-theme="light"] .chat-item-content i {
+  color: var(--icon-color);
+}
+
+[data-theme="light"] .btn-download:hover,
+[data-theme="light"] .btn-clear:hover,
+[data-theme="light"] .sidebar-toggle-btn:hover,
+[data-theme="light"] .attach-btn:hover,
+[data-theme="light"] .voice-btn:hover,
+[data-theme="light"] .speak-btn:hover,
+[data-theme="light"] .delete-chat-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .message-text {
+  color: #000000 !important;
+}
+
+[data-theme="light"] .message-wrapper.user .message {
+  background: transparent;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .message-wrapper.ai .message {
+  background: transparent;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .message-wrapper.user .message-text {
+  color: #000000 !important;
+}
+
+[data-theme="light"] .message-wrapper.ai .message-text {
+  color: #000000 !important;
+}
+
+[data-theme="light"] .message-time {
+  color: #000000;
+  opacity: 0.6;
+}
+
+[data-theme="light"] .message-input {
+  color: #000000;
+}
+
+[data-theme="light"] .message-input::placeholder {
+  color: #000000;
+  opacity: 0.5;
+}
+
+[data-theme="light"] .settings-modal {
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .settings-header,
+[data-theme="light"] .settings-footer {
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .settings-header h2,
+[data-theme="light"] .close-settings {
+  color: #000000;
+}
+
+[data-theme="light"] .setting-item label {
+  color: #000000;
+}
+
+[data-theme="light"] .setting-item select {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: #000000;
+}
+
+[data-theme="light"] .auth-modal {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .auth-subtitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .auth-input {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .user-info {
+  background: var(--hover-bg);
+}
+
+[data-theme="light"] .user-name {
+  color: #000000;
+}
+
+[data-theme="light"] .user-email {
+  color: #000000;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .chat-item-content i,
+[data-theme="light"] .no-chats,
+[data-theme="light"] .recent-chats-title {
+  color: #000000;
+}
+
+[data-theme="light"] .chat-title {
+  color: #000000;
+}
+
+[data-theme="light"] .chat-item.active {
+  background: var(--hover-bg);
+}
+
+[data-theme="light"] .welcome-screen h2 {
+  color: #000000;
+}
+
+[data-theme="light"] .welcome-screen p {
+  color: #000000;
+  opacity: 0.8;
+}
+
+[data-theme="light"] .suggestion-chip {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .suggestion-chip span {
+  color: #000000;
+}
+
+[data-theme="light"] .attached-file-item {
+  background: var(--bg-tertiary);
+  color: #000000;
+}
+
+[data-theme="light"] .attached-files {
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .version-details {
+  color: #000000;
+  opacity: 0.8;
+}
+
+[data-theme="light"] .version-details.pro-details {
+  color: #000000;
+}
+
+[data-theme="light"] .message-count {
+  color: #000000;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .credit-title {
+  color: #000000;
+}
+
+[data-theme="light"] .credit-developer {
+  color: #000000;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .sidebar-toggle-btn {
+  color: var(--icon-color);
+}
+
+[data-theme="light"] .user-avatar-small {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+}
+
+[data-theme="light"] .version-btn {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .version-btn:hover:not(.active) {
+  background: var(--hover-bg);
+}
+
+[data-theme="light"] .version-btn.active {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  color: white;
+}
+
+[data-theme="light"] .developer-credit-settings {
+  border-top-color: var(--border-color);
+}
+
+[data-theme="light"] .version-setting {
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="light"] .user-data-setting {
+  border-color: var(--border-color);
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .user-data-name {
+  color: #000000;
+}
+
+[data-theme="light"] .user-data-email {
+  color: #000000;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .logout-btn-settings {
+  border-color: var(--border-color);
+  color: #000000;
+}
+
+[data-theme="light"] .logout-btn-settings:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+

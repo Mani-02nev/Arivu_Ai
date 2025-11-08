@@ -1,0 +1,351 @@
+.canvas-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.canvas-modal {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.canvas-header h3 {
+  margin: 0;
+  color: #ececf1;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.canvas-close {
+  background: transparent;
+  border: none;
+  color: #ececf1;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.canvas-close:hover {
+  background: #2a2a2a;
+}
+
+.canvas-tools {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #2a2a2a;
+  flex-wrap: wrap;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tool-group label {
+  color: #ececf1;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tool-btn {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: #ececf1;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.tool-btn:hover {
+  background: #3a3a3a;
+  border-color: #4a4a4a;
+}
+
+.tool-btn.active {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  border-color: transparent;
+  color: white;
+}
+
+.clear-btn {
+  margin-left: auto;
+}
+
+.color-picker {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.brush-slider {
+  width: 100px;
+  height: 4px;
+  border-radius: 2px;
+  background: #2a2a2a;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.brush-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  cursor: pointer;
+}
+
+.brush-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  cursor: pointer;
+  border: none;
+}
+
+.canvas-container {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f0f0f;
+}
+
+.drawing-canvas {
+  background: white;
+  border: 2px solid #2a2a2a;
+  border-radius: 8px;
+  cursor: crosshair;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.canvas-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.canvas-cancel-btn,
+.canvas-save-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.canvas-cancel-btn {
+  background: #2a2a2a;
+  color: #ececf1;
+}
+
+.canvas-cancel-btn:hover {
+  background: #3a3a3a;
+}
+
+.canvas-save-btn {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  color: white;
+}
+
+.canvas-save-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.canvas-generate-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #00d4ff;
+  color: white;
+}
+
+.canvas-generate-btn:hover {
+  background: #00b8e6;
+  transform: scale(1.02);
+}
+
+.code-preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.code-preview-content {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.code-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.code-preview-header h4 {
+  margin: 0;
+  color: #ececf1;
+}
+
+.code-preview-header button {
+  background: transparent;
+  border: none;
+  color: #ececf1;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.code-tabs {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.code-tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: #8e8ea0;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.code-tab.active {
+  background: #2a2a2a;
+  color: #ececf1;
+}
+
+.code-preview {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  margin: 0;
+  background: #0f0f0f;
+  color: #ececf1;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.code-preview code {
+  color: #ececf1;
+}
+
+.code-preview-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.code-preview-actions button {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.code-preview-actions button:first-child {
+  background: #2a2a2a;
+  color: #ececf1;
+}
+
+.code-preview-actions button:first-child:hover {
+  background: #3a3a3a;
+}
+
+.code-preview-actions button:last-child {
+  background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+  color: white;
+}
+
+.code-preview-actions button:last-child:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .canvas-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .drawing-canvas {
+    width: 100%;
+    height: auto;
+  }
+  
+  .canvas-tools {
+    gap: 10px;
+  }
+}
+
